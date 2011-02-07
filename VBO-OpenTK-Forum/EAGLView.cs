@@ -72,11 +72,12 @@ namespace VBOOpenTKForum
 		protected override void CreateFrameBuffer ()
 		{
 			base.CreateFrameBuffer ();
+			
 			GL.Viewport (0, 0, Size.Width, Size.Height);
 			GL.MatrixMode (All.Projection);
 			GL.LoadIdentity ();
-			Matrix4 perspective = Matrix4.CreatePerspectiveFieldOfView (MathHelper.DegreesToRadians (45f), ((float)Size.Width / (float)Size.Height), 0.1f, 10000f);
 			
+			Matrix4 perspective = Matrix4.CreatePerspectiveFieldOfView (MathHelper.DegreesToRadians (45f), ((float)Size.Width / (float)Size.Height), 0.1f, 10000f);			
 			unsafe {
 				GL.LoadMatrix (&perspective.Row0.X);
 			}
@@ -101,14 +102,18 @@ namespace VBOOpenTKForum
 		protected override void OnRenderFrame (FrameEventArgs e)
 		{
 			base.OnRenderFrame (e);
+			
 			MakeCurrent ();
+			
 			GL.ClearColor (0.5f, 0.5f, 0.5f, 1f);
 			GL.Clear ((uint)All.ColorBufferBit);
 			GL.MatrixMode (All.Modelview);
+			
 			Matrix4 matrix = Matrix4.LookAt (100f, 100f, 100f, 0f, 0f, 0f, 0f, 0f, 1f);
 			unsafe {
 				GL.LoadMatrix (&matrix.Row0.X);
 			}
+			
 			GL.BindBuffer (All.ArrayBuffer, this.vertexBuffer);
 			GL.EnableClientState (All.VertexArray);
 			GL.VertexPointer (3, All.Float, 0, IntPtr.Zero);
@@ -119,6 +124,7 @@ namespace VBOOpenTKForum
 			GL.DrawElements (All.Triangles, this.indcArray.Length, All.UnsignedShort, IntPtr.Zero);
 			GL.DisableClientState (All.VertexArray);
 			GL.DisableClientState (All.ColorArray);
+			
 			SwapBuffers ();
 		}
 		

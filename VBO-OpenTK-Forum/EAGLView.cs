@@ -33,36 +33,22 @@ namespace VBOOpenTKForum
 		}
 		
 		private float[] vertArray = { 
-			-53.69261f, 53.29295f, 57.87402f, 
-			-53.69261f, -53.00626f, -73.22835f, 
-			-53.69261f, -53.00626f, -6.299212f, 
-			41.97668f, 53.29295f, -44.94617f, 
-			41.97668f, 53.29295f, 57.87402f, 
-			41.97668f, -53.00626f, -64.17323f, 
-			41.97668f, -53.00626f, -6.299212f 
+			20f, -20f, 20f, 
+			20f, 20f, 20f, 
+			-20f, 20f, 20f, 
+			-20f, -20f, 20f
 		};
 		
 		private byte[] colorArray = { 
 			255, 255, 255, 255, 
 			255, 255, 255, 255, 
 			255, 255, 255, 255, 
-			255, 255, 255, 255, 
-			255, 255, 255, 255,
-			255, 255, 255, 255, 
-			255, 255, 255, 255 
+			255, 255, 255, 255
 		};
 		
 		private ushort[] indcArray = { 
 			0, 1, 2, 
-			3, 0, 4, 
-			3, 5, 1, 
-			3, 1, 0, 
-			2, 4, 0, 
-			4, 2, 6, 
-			5, 2, 1, 
-			2, 5, 6, 
-			3, 6, 5, 
-			6, 3, 4 
+			2, 3, 0
 		};
 		
 		private uint vertexBuffer = 0;
@@ -82,7 +68,7 @@ namespace VBOOpenTKForum
 				GL.LoadMatrix (&perspective.Row0.X);
 			}
 			
-			GL.Rotate (270f, 0f, 0f, 1f);
+			//GL.Rotate (270f, 0f, 0f, 1f);
 			GL.ShadeModel (All.Flat);
 			GL.ClearDepth (1f);
 			GL.Enable (All.DepthTest);
@@ -105,11 +91,16 @@ namespace VBOOpenTKForum
 			
 			MakeCurrent ();
 			
-			GL.ClearColor (0.5f, 0.5f, 0.5f, 1f);
+			GL.ClearColor (0.5f, 0.5f, 0.7f, 1f);
 			GL.Clear ((uint)All.ColorBufferBit);
 			GL.MatrixMode (All.Modelview);
 			
-			Matrix4 matrix = Matrix4.LookAt (100f, 100f, 100f, 0f, 0f, 0f, 0f, 0f, 1f);
+			Vector3 m_eye = new Vector3(0f, 0f, 250f);
+			Vector3 m_target = new Vector3(0f, 0f, 0f);
+			Vector3 m_up = new Vector3(0f, 1f, 0f);
+			
+			//Matrix4 matrix = Matrix4.LookAt (50f, 100f, 100f, 0f, 0f, 0f, 0f, 0f, 1f);
+			Matrix4 matrix = Matrix4.LookAt (m_eye, m_target, m_up);
 			unsafe {
 				GL.LoadMatrix (&matrix.Row0.X);
 			}

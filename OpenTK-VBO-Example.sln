@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VBO-OpenTK-Forum", "VBO-OpenTK-Forum\VBO-OpenTK-Forum.csproj", "{A96A3892-7D2E-47B7-B4B1-33A9A46B5B4C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTK-VBO-Example", "VBO-OpenTK-Forum\OpenTK-VBO-Example.csproj", "{A96A3892-7D2E-47B7-B4B1-33A9A46B5B4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +21,6 @@ Global
 		{A96A3892-7D2E-47B7-B4B1-33A9A46B5B4C}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = VBO-OpenTK-Forum\VBO-OpenTK-Forum.csproj
+		StartupItem = VBO-OpenTK-Forum\OpenTK-VBO-Example.csproj
 	EndGlobalSection
 EndGlobal
